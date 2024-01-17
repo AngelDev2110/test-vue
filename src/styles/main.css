@@ -2,3 +2,30 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+:root {
+    --color1: #000000;
+    --color2: #4E4FEB;
+    --color3: #A5C9CA;
+    --color4: #E7F6F2;
+}
+
+.bg1 {
+    background-color: var(--color1);
+}
+
+.bg2 {
+    background-color: var(--color2);
+}
+
+.bg3 {
+    background-color: var(--color3);
+}
+
+.bg4 {
+    background-color: var(--color4);
+}
