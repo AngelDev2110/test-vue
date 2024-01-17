@@ -11,6 +11,7 @@
       <o-input v-model="username" placeholder="Usuario" class="mb-4 w-full border p-3 rounded-sm shadow-md shadow-slate-800" />
       <o-input v-model="password" type="password" placeholder="Contraseña" class="mb-4 w-full border p-3 rounded-sm shadow-md shadow-slate-800" />
       <o-button @click="login" class="text-white px-6 py-3 rounded-full shadow-md hover:shadow-lg hover:shadow-slate-900 shadow-slate-900 transition duration-300">Iniciar Sesión</o-button>
+      <p v-if="error" class="mt-4 text-white bg-gradient-to-br from-red-800 to-red-600 py-2 px-6 text-center shadow-md shadow-slate-900 rounded-md">{{ error }}</p>
     </div>
   </div>
 </template>
@@ -25,6 +26,7 @@ export default {
     return {
       username: '',
       password: '',
+      error: null,
     };
   },
   methods: {
@@ -38,10 +40,10 @@ export default {
           document.cookie = 'logginSuccess=true';
           this.$router.push('/todo-list');
         } else {
-          console.error('Credenciales incorrectas');
+          this.error = 'Credenciales incorrectas';
         }
       } catch (error) {
-        console.error('Error en la llamada a la API', error);
+        this.error = 'Error en la llamada a la API';
       }
     },
   },
