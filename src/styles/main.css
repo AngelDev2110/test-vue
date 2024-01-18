@@ -86,3 +86,31 @@ body {
       transform: scale(1.0); 
     } 
   }
+
+/*oruga table styles*/
+.o-table{
+  text-align: center;
+  font-size: larger;
+  margin: 1rem auto 0 auto;
+  width:fit-content;
+}
+
+.o-table__tr--selected{
+    background-color: var(--color2);
+}
+
+tr:hover{
+    background-color: var(--color2);
+    cursor: pointer;
+}
+
+tr{
+    transition: all 0.3s ease;
+}
+thead tr{
+  color: #4ecceb;
+}
+thead tr:hover{
+    background-color:unset;
+    cursor: unset;
+}
