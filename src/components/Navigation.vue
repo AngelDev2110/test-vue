@@ -39,8 +39,7 @@
       logout() {
         // Borrar la cookie de logginSuccess
         document.cookie = 'logginSuccess=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-  
-        // Redirigir a la página de inicio de sesión (puedes ajustar la ruta según tus necesidades)
+        // Redireccionar a la página de login
         this.$router.push('/login');
       },
     },
