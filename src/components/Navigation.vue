@@ -4,22 +4,22 @@
         <div class="flex items-center flex-col space-y-1 sm:flex-row sm:space-x-6">
           <router-link
             to="/todo-list"
-            class="text-white text-2xl hover:text-blue-600 transition duration-300"
-            :class="{ 'text-blue-600': isRouteActive('/todo-list') }"
+            class="text-2xl hover:text-blue-600 transition duration-300"
+            :class="{ 'text-blue-600': isRouteActive('/todo-list'), 'text-white': !isRouteActive('/todo-list') }"
           >
             TodoList
           </router-link>
           <router-link
             to="/timer"
-            class="text-white text-2xl hover:text-blue-600 transition duration-300"
-            :class="{ 'text-blue-600': isRouteActive('/timer') }"
+            class="text-2xl hover:text-blue-600 transition duration-300"
+            :class="{ 'text-blue-600': isRouteActive('/timer'), 'text-white': !isRouteActive('/timer')}"
           >
             Timer
           </router-link>
           <router-link
             to="/git-profile"
-            class="text-white text-2xl hover:text-blue-600 transition duration-300"
-            :class="{ 'text-blue-600': isRouteActive('/git-profile') }"
+            class="text-2xl hover:text-blue-600 transition duration-300"
+            :class="{ 'text-blue-600': isRouteActive('/git-profile'), 'text-white': !isRouteActive('/git-profile') }"
           >
             GitProfile
           </router-link>
