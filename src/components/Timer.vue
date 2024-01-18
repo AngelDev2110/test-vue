@@ -2,9 +2,9 @@
     <div>
       <div class="timer text-center">{{ formattedTime }}</div>
       <div class="buttons">
-        <button @click="startTimer">Iniciar</button>
-        <button @click="pauseTimer">Pausar</button>
-        <button @click="resetTimer">Limpiar</button>
+        <button @click="startTimer" :disabled="isRunning">Iniciar</button>
+        <button @click="pauseTimer" :disabled="!isRunning">Pausar</button>
+        <button @click="resetTimer" :disabled="!isRunning && currentTime === 0">Limpiar</button>
       </div>
     </div>
   </template>
@@ -14,6 +14,7 @@
     data() {
       return {
         currentTime: 0,
+        isRunning: false,
       };
     },
     computed: {
@@ -26,9 +27,31 @@
       },
     },
     methods: {
+      startTimer() {
+        if (!this.isRunning) {
+          this.isRunning = true;
+          this.timerInterval = setInterval(() => {
+            this.currentTime += 1;
+          }, 1000);
+        }
+      },
+      pauseTimer() {
+        if (this.isRunning) {
+          this.isRunning = false;
+          clearInterval(this.timerInterval);
+        }
+      },
+      resetTimer() {
+        this.currentTime = 0;
+        this.isRunning = false;
+        clearInterval(this.timerInterval);
+      },
       pad(value) {
         return value.toString().padStart(2, '0');
       },
+    },
+    beforeDestroy() {
+      clearInterval(this.timerInterval);
     },
   };
   </script>
