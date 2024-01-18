@@ -1,12 +1,15 @@
 <template>
-    <div>
-      <Navigation />
-      <div class="flex flex-col justify-center items-center">
-          <h1 class=" text-4xl">Timer</h1>
-          <Timer />
+  <div class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 h-screen flex flex-col">
+    <Navigation />
+
+    <div class="flex-grow flex items-center justify-center mb-40">
+      <div class="flex flex-col items-center">
+        <h1 class="text-6xl font-bold text-white mb-4">Timer</h1>
+        <Timer />
       </div>
     </div>
-  </template>
+  </div>
+</template>
   
   <script>
   import Navigation from '@/components/Navigation.vue';
