@@ -13,19 +13,32 @@
             class="mt-4 bg-gradient-to-bl px-3 py-1 rounded-2xl shadow-md shadow-slate-700 border border-slate-400 hover:text-slate-400 hover:shadow-lg hover:shadow-slate-700 transition duration-300"
             />
             <div v-if="tableData[0]">
-              <o-table v-model:selected="selected" :data="tableData" focusable>
+              <o-table v-model:selected="selected" :data="filteredTasks" focusable>
                     <o-table-column
                         v-for="(column, idx) in columns"
                         :key="idx"
                         v-slot="{ row }"
                         v-bind="column">
-                        {{ row[column.field] }}
+                        <div v-if="column.field === 'done'">
+                          <div
+                            :class="{
+                              'text-green-500': row.done,
+                              'text-red-500': !row.done
+                            }"
+                          >
+                            {{ row.done ? '✔' : '❌' }}
+                          </div>
+                        </div>
+                        <div v-else>
+                          {{ row[column.field] }}
+                        </div>
                     </o-table-column>
                 </o-table>
             </div>
             <div v-else class="text-center text-white text-xl mt-2"> Sin tareas registradas</div>
               <div v-if="selected" class=" flex justify-evenly mt-4">
-                <o-button @click="edit=true" class=" bg-gradient-to-br px-3 py-1 rounded-2xl shadow-md shadow-slate-700 border border-slate-400 hover:text-cyan-300 hover:shadow-lg hover:shadow-slate-700 transition duration-300" :class="{'text-cyan-300': edit}">Editar</o-button>
+                <o-button @click="edit=true" class=" bg-gradient-to-br px-3 py-1 rounded-2xl shadow-md shadow-slate-700 border border-slate-400 hover:text-yellow-300 hover:shadow-lg hover:shadow-slate-700 transition duration-300" :class="{'text-yellow-300': edit}">Editar</o-button>
+                <o-button @click="changeState" class=" bg-gradient-to-bl px-3 py-1 rounded-2xl shadow-md shadow-slate-700 border border-slate-400 hover:text-cyan-300 hover:shadow-lg hover:shadow-slate-700 transition duration-300">{{ selected.done ? 'Rehabilitar' : 'Terminar' }}</o-button>
                 <o-button @click="deleteTask" class=" bg-gradient-to-bl px-3 py-1 rounded-2xl shadow-md shadow-slate-700 border border-slate-400 hover:text-red-600 hover:shadow-lg hover:shadow-slate-700 transition duration-300">Eliminar</o-button>
               </div>
           </div>
@@ -68,24 +81,14 @@
     },
     {
         field: "title",
-        label: "Title",
+        label: "Título",
         width: "300",
     },
     {
         field: "done",
-        label: "Done",
+        label: "Terminada",
     }],
-    tableData: [
-    {
-        id: 1,
-        title: "Hacer tarea",
-        done: false,
-    },
-    {
-        id: 2,
-        title: "No hacer tarea",
-        done: false,
-    }],
+    tableData: [],
     selected: null,
     title: "",
     error: null,
@@ -94,6 +97,15 @@
     },
     components: {
       Navigation,
+    },
+    computed: {
+      filteredTasks() {
+        return this.tableData.slice().sort((a, b) => {
+          if (a.done && !b.done) return 1;
+          if (!a.done && b.done) return -1;
+          return 0;
+        });
+      },
     },
     methods:{
       addTask(){
@@ -132,6 +144,16 @@
           return task.id !== this.selected.id
         });
         this.tableData = newTableData
+        this.selected = null
+        this.edit = false
+        this.error = null
+      },
+      changeState(){
+        this.tableData.forEach(task => {
+            if(task.id === this.selected.id){
+              task.done = !task.done
+            }
+          });
         this.selected = null
         this.edit = false
         this.error = null
