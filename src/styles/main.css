@@ -14,23 +14,7 @@ body {
     --color4: #E7F6F2;
 }
 
-.bg1 {
-    background-color: var(--color1);
-}
-
-.bg2 {
-    background-color: var(--color2);
-}
-
-.bg3 {
-    background-color: var(--color3);
-}
-
-.bg4 {
-    background-color: var(--color4);
-}
-
-/* loading simbol */
+/* Símbolo animado de carga */
 
 .sk-chase {
     width: 30px;
@@ -87,7 +71,7 @@ body {
     } 
   }
 
-/*oruga table styles*/
+/*Estilos de la tabla de OrugaJS*/
 .o-table{
   text-align: center;
   font-size: larger;

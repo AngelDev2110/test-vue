@@ -1,3 +1,5 @@
+<!-- Pantalla si se accede a una página inexistente -->
+
 <template>
      <div class="flex items-center justify-center h-screen bg-gradient-to-br from-slate-900 to-slate-700">
     <div class="text-center text-white flex flex-col">

@@ -6,8 +6,8 @@ import GitProfilePage from '../views/GitProfilePage.vue';
 import NotFoundPage from '../views/NotFoundPage.vue';
 
 const routes = [
-  { path: '/', redirect: '/login' },
-  { path: '/login', component: LoginPage },
+  { path: '/', redirect: '/login' }, // Redirige a la página de inicio de sesión
+  { path: '/login', component: LoginPage }, //página de inicio de sesion sin autenticación
   { path: '/todo-list', component: TodoListPage, meta: { requiresAuth: true } }, // Agrega meta.requiresAuth
   { path: '/timer', component: TimerPage, meta: { requiresAuth: true } }, // Agrega meta.requiresAuth
   { path: '/git-profile', component: GitProfilePage, meta: { requiresAuth: true } }, // Agrega meta.requiresAuth
