@@ -8,8 +8,8 @@
         <path d="M3 4l9 16l9 -16" />
       </svg>
       <h1 class="mt-4 mb-8 text-white text-4xl font-semibold">Bienvenido</h1>
-      <o-input v-model="username" placeholder="Usuario" class="mb-4 w-full border p-3 rounded-sm shadow-md shadow-slate-800" />
-      <o-input v-model="password" type="password" placeholder="Contraseña" class="mb-4 w-full border p-3 rounded-sm shadow-md shadow-slate-800" />
+      <o-input v-model="username" @keydown.enter="login" placeholder="Usuario" class="mb-4 w-full border p-3 rounded-sm shadow-md shadow-slate-800" />
+      <o-input v-model="password" @keydown.enter="login" type="password" placeholder="Contraseña" class="mb-4 w-full border p-3 rounded-sm shadow-md shadow-slate-800" />
       <o-button @click="login" class="text-white px-6 py-3 rounded-full shadow-md hover:shadow-lg hover:shadow-slate-900 shadow-slate-900 transition duration-300">Iniciar Sesión</o-button>
       
       <div v-if="loading" class="sk-chase mt-4">

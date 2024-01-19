@@ -46,7 +46,7 @@
             <div v-if="!edit">
               <h2 class="text-center text-2xl font-bold text-indigo-500">Agregar Tarea</h2>
               <div class="flex mt-3">
-                <o-input v-model="title" placeholder="Nombre Tarea" class="w-full border px-3 py-2 rounded-l-md text-black" />
+                <o-input v-model="title" @keydown.enter="addTask" placeholder="Nombre Tarea" class="w-full border px-3 py-2 rounded-l-md text-black" />
                 <o-button @click="addTask" class="bg-gradient-to-br px-3 rounded-r-md shadow-md shadow-slate-700 border border-slate-400 hover:text-green-400 hover:shadow-lg hover:shadow-slate-700 transition duration-300">Agregar</o-button>
               </div>
             </div>
@@ -54,7 +54,7 @@
               <h2 class="text-center text-2xl font-bold text-indigo-500">Editar Tarea</h2>
               <h3 class="text-center text-xl font-bold text-cyan-300">{{ selected?.title }}</h3>
               <div class="flex mt-3">
-                <o-input v-model="title" placeholder="Nuevo nombre" class="w-full border px-3 py-2 rounded-l-md text-black" />
+                <o-input v-model="title" @keydown.enter="editTask" placeholder="Nuevo nombre" class="w-full border px-3 py-2 rounded-l-md text-black" />
                 <o-button @click="editTask" class="bg-gradient-to-br px-3 rounded-r-md shadow-md shadow-slate-700 border border-slate-400 hover:text-green-400 hover:shadow-lg hover:shadow-slate-700 transition duration-300">Guardar</o-button>
               </div>
             </div>
